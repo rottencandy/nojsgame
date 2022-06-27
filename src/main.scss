@@ -1,3 +1,92 @@
-body { background-color: #ccc }
+/**
+* Vars
+*/
+:root {
+    --floorCheckerSize: 50px;
+}
 
-h1 { color: #567 }
+html, body {
+    margin: 0;
+    height: 100%;
+    font: 100 1.5rem Trebuchet, sans-serif;
+    overflow: hidden;
+}
+
+.root {
+    position: relative;
+    background: lightgray;
+    min-height: 100%;
+
+    // hide all inputs and use labels to toggle
+    > input { display: none }
+}
+
+/**
+* Main Menu
+*/
+.menu {
+    position: absolute;
+    z-index: 999;
+    top: 35%;
+    left: 40%;
+
+    width: 10em;
+    height: 10em;
+    border-radius: 10%;
+
+    padding: 1em;
+    background: green;
+    text-align: center;
+
+    > .start {
+        background: blue;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 20px;
+    }
+
+    // hide menu on start click
+    #start:checked ~ & {
+        animation: 1s ease-in 0s 1 normal both running exitup;
+    }
+}
+
+.scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    background: skyblue;
+
+    // fade in on start
+    #start:checked ~ & {
+        animation: 1s linear 0.2s 1 normal both running fadein;
+    }
+}
+
+.floor {
+    position: absolute;
+    width: 40em;
+    height: 40em;
+
+    // checkerboard pattern
+    background: repeating-conic-gradient(gray 0% 25%, white 0% 50%) 50% / var(--floorCheckerSize) var(--floorCheckerSize);
+
+    transform: perspective(200px) rotateX(20deg);
+}
+
+/**
+* Keyframes
+*/
+@keyframes exitup {
+    to { top: -100% }
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

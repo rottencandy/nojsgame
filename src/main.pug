@@ -1,5 +1,5 @@
 doctype html
-html(lang="en")
+html(lang='en')
   head
     title='Untitiled game'
     link(
@@ -8,6 +8,11 @@ html(lang="en")
         href='game.css'
     )
   body
-    h1 Hello world
-    p.
-      Test
+    .root
+        input(type='checkbox' id='start' autocomplete='off')
+        .menu
+            h4 Untitled Game
+            label.start(for='start') Start
+        .scene
+            .character
+            .floor
