@@ -1,0 +1,17 @@
+{
+  "name": "nojsgame",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Mohammed Saud <md.saud020@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.53.0",
+    "watch": "^1.0.2"
+  },
+  "scripts": {
+    "build:haml": "haml src/main.haml index.html",
+    "build:sass": "sass src/main.scss game.css",
+    "build": "yarn run build:haml && yarn run build:sass",
+    "dev": "watch 'yarn build' ./src"
+  }
+}
