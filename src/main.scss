@@ -65,9 +65,12 @@ html, body {
     perspective-origin: 50% 45%;
     transform-style: preserve-3d;
 
-    // fade in on start
     #start:checked ~ & {
-        animation: 1s linear 0.2s 1 normal both running fadein;
+        animation:
+            // fade in on start
+            1s linear 0.2s 1 normal both running fadein,
+            // sway scene in x axis
+            4s ease-in-out 0s infinite alternate both running sway-perspective;
     }
 }
 
@@ -145,4 +148,9 @@ html, body {
     to {
         transform: translateY(0em);
     }
+}
+
+@keyframes sway-perspective {
+    from { perspective-origin: 40% 45% }
+    to { perspective-origin: 60% 45% }
 }
