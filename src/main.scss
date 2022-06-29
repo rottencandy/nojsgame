@@ -8,7 +8,8 @@ $menuSize: 10em;
 $skyColor: skyblue;
 $roadPath: 'M 100 0 L 400 0 L 400 900 L 100 900 z';
 
-html, body {
+html,
+body {
     margin: 0;
     height: 100%;
     font: 100 50px Trebuchet, sans-serif;
@@ -21,7 +22,9 @@ html, body {
     min-height: 100%;
 
     // hide all inputs and use labels to toggle
-    > input { display: none }
+    >input {
+        display: none
+    }
 }
 
 /**
@@ -41,7 +44,7 @@ html, body {
     background: green;
     text-align: center;
 
-    > .start {
+    >.start {
         background: blue;
         cursor: pointer;
         padding: 10px;
@@ -49,7 +52,7 @@ html, body {
     }
 
     // hide menu on start click
-    #start:checked ~ & {
+    #start:checked~& {
         animation: 1s ease-in 0s 1 normal both running exitup;
     }
 }
@@ -126,16 +129,74 @@ html, body {
 }
 
 /**
+* Grid Cells
+*/
+.cell {
+    &-wrapper {
+        position: absolute;
+    }
+
+    &-grid {
+        width: 100vw;
+        height: 100vh;
+        background-color: transparent;
+        display: grid;
+        grid-template: repeat(1, 1fr) / repeat(100, 1fr);
+    }
+
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+/**
+* Car movement
+*/
+
+@for $i from 0 to 100 {
+   .cell:nth-child(#{$i + 1}):hover ~ .car-wrapper > .car {
+        @if $i <= 5 {
+            left: 0;
+        } @else if $i >= 95 {
+            left: 90%;
+        } @else {
+            left: calc(($i * 1%) - 5%);
+        }
+    }
+}
+
+.car {
+    &-wrapper {
+        --car-position-x: 5;
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    position: absolute;
+    width: 10%;
+    height: 10vh;
+    bottom: 5vh;
+    background-color: aqua;
+    z-index: 4;
+}
+
+/**
 * Keyframes
 */
 @keyframes exitup {
-    to { top: -100% }
+    to {
+        top: -100%
+    }
 }
 
 @keyframes fadein {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
