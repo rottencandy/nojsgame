@@ -9,12 +9,12 @@ html(lang='en')
     )
   body
     .root
-        include cell-car.pug
         input(type='checkbox' id='start' autocomplete='off')
         .menu
             h4 Untitled Game
             label.start(for='start') Start
         .scene
+            include cell-car.pug
             .angled-backdrop
             .angled-platform
                 .looping-floor
