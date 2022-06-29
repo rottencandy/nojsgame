@@ -13,10 +13,18 @@ html(lang='en')
         .menu
             h4 Untitled Game
             label.start(for='start') Start
-        .scene
-            include cell-car.pug
-            .angled-backdrop
-            .angled-platform
-                .looping-floor
-                    .road-path
-                .dist-fade-overlay
+        - var n = 0
+        .cell-wrapper
+            .cell-grid
+                while n < 100
+                    .cell
+                    - n++
+                .scene
+                    .car-wrapper
+                        .car
+                    .perspective-wrapper
+                        .angled-backdrop
+                        .angled-platform
+                            .looping-floor
+                                .road-path
+                            .dist-fade-overlay
