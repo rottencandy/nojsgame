@@ -4,13 +4,15 @@
 */
 $floorCheckerSize: 50px;
 $floorWidth: 15em;
-$floorDist: 40em;
-$floorLoopDist: 20em;
-$floorMoveDuration: 10s;
-$roadColor: gray;
+$floorDist: 250em;
+$floorLoopStartDist: -210em;
+$floorLoopEndDist: 0em;
+$floorMoveDuration: 30s;
+
 $menuSize: 10em;
 $skyColor: skyblue;
-$roadPath: 'M 100 0 h 300 V 1000 c 0 500 150 500 150 1000 v 1000 c 0 500 -150 500 -150 1000 v 1000 h -300 v -1000 c 0 -500 150 -500 150 -1000 V 2000 c 0 -500 -100 -500 -150 -1000 z';
+$roadColor: gray;
+$roadPath: 'M 100 0 h 300 V 1300 c 0 500 150 500 150 1000 v 1000 c 0 500 -150 500 -150 1000 v 1000 c 0 500 150 500 150 1000 v 1000 c 0 500 150 500 150 1000 v 1000 c 0 1000 -300 1000 -300 2000 v 1300 h -300 v -1300 c 0 -1000 300 -1000 300 -2000 v -1000 c 0 -500 -150 -500 -150 -1000 v -1000 c 0 -500 -150 -500 -150 -1000 v -1000 c 0 -500 150 -500 150 -1000 v -1000 c 0 -500 -100 -500 -150 -1000 z';
 
 html,
 body {
@@ -117,7 +119,7 @@ body {
     > .road-path {
         position: relative;
         width: 100%;
-        height: 95%;
+        height: 100%;
         clip-path: path($roadPath);
         background: $roadColor;
     }
@@ -170,7 +172,6 @@ body {
 
 .car {
     &-wrapper {
-        --car-position-x: 5;
         position: absolute;
         top: 0; right: 0; bottom: 0; left: 0;
         display: flex;
@@ -207,10 +208,10 @@ body {
 
 @keyframes floorLoopZ {
     from {
-        transform: translateY(-10em);
+        transform: translateY($floorLoopStartDist);
     }
     to {
-        transform: translateY(calc($floorLoopDist - 10em));
+        transform: translateY($floorLoopEndDist);
     }
 }
 
