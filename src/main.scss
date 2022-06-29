@@ -10,7 +10,7 @@ $floorMoveDuration: 10s;
 $roadColor: gray;
 $menuSize: 10em;
 $skyColor: skyblue;
-$roadPath: 'M 100 0 H 400 V 900 C 400 1200 550 1200 550 1500 V 2500 H 200 V 1500 C 200 1200 101 1200 100 900 z';
+$roadPath: 'M 100 0 h 300 V 1000 c 0 500 150 500 150 1000 v 1000 c 0 500 -150 500 -150 1000 v 1000 h -300 v -1000 c 0 -500 150 -500 150 -1000 V 2000 c 0 -500 -100 -500 -150 -1000 z';
 
 html,
 body {
