@@ -3,10 +3,14 @@
 * Vars
 */
 $floorCheckerSize: 50px;
-$floorWidth: 10em;
+$floorWidth: 15em;
+$floorDist: 40em;
+$floorLoopDist: 20em;
+$floorMoveDuration: 10s;
+$roadColor: gray;
 $menuSize: 10em;
 $skyColor: skyblue;
-$roadPath: 'M 100 0 L 400 0 L 400 900 L 100 900 z';
+$roadPath: 'M 100 0 H 400 V 900 C 400 1200 550 1200 550 1500 V 2500 H 200 V 1500 C 200 1200 101 1200 100 900 z';
 
 html,
 body {
@@ -99,7 +103,7 @@ body {
 .looping-floor {
     position: absolute;
     width: $floorWidth;
-    height: 40em;
+    height: $floorDist;
     left: calc(50% - $floorWidth / 2);
 
     // checkerboard pattern
@@ -108,15 +112,14 @@ body {
         50% / 50px
         50px;
 
-    border-bottom: 10px solid red;
-    animation: 10s linear 0s infinite normal both running floorLoopZ;
+    animation: $floorMoveDuration linear 0s infinite normal both running floorLoopZ;
 
     > .road-path {
         position: relative;
         width: 100%;
-        height: 90%;
+        height: 95%;
         clip-path: path($roadPath);
-        background: blue;
+        background: $roadColor;
     }
 }
 
@@ -207,7 +210,7 @@ body {
         transform: translateY(-10em);
     }
     to {
-        transform: translateY(0em);
+        transform: translateY(calc($floorLoopDist - 10em));
     }
 }
 
