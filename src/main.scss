@@ -7,6 +7,7 @@ $floorWidth: 15em;
 $floorDist: 40em;
 $floorLoopDist: 20em;
 $floorMoveDuration: 10s;
+$roadColor: gray;
 $menuSize: 10em;
 $skyColor: skyblue;
 $roadPath: 'M 100 0 H 400 V 900 C 400 1200 550 1200 550 1500 V 2500 H 200 V 1500 C 200 1200 101 1200 100 900 z';
@@ -118,7 +119,7 @@ body {
         width: 100%;
         height: 95%;
         clip-path: path($roadPath);
-        background: gray;
+        background: $roadColor;
     }
 }
 
