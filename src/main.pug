@@ -20,11 +20,13 @@ html(lang='en')
                     .cell
                     - n++
                 .scene
-                    .car
+                    .person
                         include person.svg
                     .perspective-wrapper
                         .angled-backdrop
                         .angled-platform
                             .looping-floor
                                 .road-path
+                                - for (var i = 0; i < 100; i++)
+                                    div(class='obstacle obstacle-' + i)
                             .dist-fade-overlay
