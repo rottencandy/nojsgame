@@ -1,0 +1,38 @@
+.car {
+    /* BB-8 */
+    & svg {
+      display: block;
+      position: absolute;
+    }
+
+    & #right-arm {
+      transform-origin: 50% 50%;
+      position: absolute;
+      animation: spinRight 0.5s infinite alternate;
+    }
+    & #left-arm {
+      transform-origin: 50% 50%;
+      position: absolute;
+      animation: spinLeft 0.5s infinite alternate;
+    }
+    & #right-leg {
+      transform-origin: 50% 50%;
+      position: absolute;
+      animation: spinRight 0.5s infinite alternate;
+    }
+    & #left-leg {
+      transform-origin: 50% 50%;
+      position: absolute;
+      animation: spinLeft 0.5s infinite alternate;
+    }
+    /* animation */
+    @keyframes spinRight {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(30deg); }
+    }
+
+    @keyframes spinLeft {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-30deg); }
+    }
+}
