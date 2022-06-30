@@ -1,4 +1,5 @@
 @use 'sass:math';
+@import 'person';
 /**
 * Vars
 */
@@ -7,10 +8,10 @@ $floorWidth: 15em;
 $floorDist: 250em;
 $floorLoopStartDist: -210em;
 $floorLoopEndDist: 0em;
-$floorMoveDuration: 30s;
+$floorMoveDuration: 40s;
 
 $menuSize: 10em;
-$skyColor: skyblue;
+$skyColor: #bf7b9e;
 $roadColor: gray;
 $roadPath: 'M 100 0 h 300 V 1300 c 0 500 150 500 150 1000 v 1000 c 0 500 -150 500 -150 1000 v 1000 c 0 500 150 500 150 1000 v 1000 c 0 500 150 500 150 1000 v 1000 c 0 1000 -300 1000 -300 2000 v 1300 h -300 v -1300 c 0 -1000 300 -1000 300 -2000 v -1000 c 0 -500 -150 -500 -150 -1000 v -1000 c 0 -500 -150 -500 -150 -1000 v -1000 c 0 -500 150 -500 150 -1000 v -1000 c 0 -500 -100 -500 -150 -1000 z';
 
@@ -75,6 +76,7 @@ body {
 
 .scene {
     opacity: 0;
+    display: none;
     top: 0;
     background: $skyColor;
     position: absolute;
@@ -84,6 +86,7 @@ body {
     #start:checked ~ .cell-wrapper > .cell-grid > & {
         // fade in on start
         animation: 1s linear 0.2s 1 normal both running fadein;
+        display: block;
     }
 
     & > .perspective-wrapper {
@@ -94,7 +97,6 @@ body {
         transform-style: preserve-3d;
     }
 }
-
 
 .angled-backdrop {
     position: fixed;
@@ -173,7 +175,7 @@ body {
 
 @for $i from 0 to 100 {
     // move car in x - axis
-   .cell:nth-child(#{$i + 1}):hover ~ .scene > .car-wrapper > .car {
+   .cell:nth-child(#{$i + 1}):hover ~ .scene > .car {
         @if $i <= 5 {
             left: 0;
         } @else if $i >= 95 {
@@ -200,19 +202,10 @@ body {
 }
 
 .car {
-    &-wrapper {
-        position: absolute;
-        top: 0; right: 0; bottom: 0; left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
     position: absolute;
-    width: 10%;
-    height: 10vh;
-    bottom: 5vh;
-    background-color: aqua;
+    width: 9%;
+    height: 15vh;
+    bottom: 20vh;
     z-index: 4;
 }
 

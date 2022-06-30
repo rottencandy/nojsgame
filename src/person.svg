@@ -1,0 +1,41 @@
+<svg viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g id="right-arm">
+    <ellipse cx="89.5" cy="50.5" rx="8.5" ry="5.5" fill="#D9D9D9" />
+    <rect x="89" y="44" width="13" height="32" rx="2" transform="rotate(90 89 44)" fill="#D80404" />
+  </g>
+
+  <g id="left-arm">
+    <ellipse cx="8.5" cy="50.5" rx="8.5" ry="5.5" fill="#D9D9D9" />
+    <rect x="40" y="44" width="13" height="32" rx="2" transform="rotate(90 40 44)" fill="#D80404" />
+  </g>
+
+  <g id="right-leg">
+    <path d="M68 118L49 118L49 95C49 93.3431 50.3431 92 52 92L65 92C66.6569 92 68 93.3431 68 95L68 118Z" fill="#D80404" />
+    <path d="M52 121C52 120.448 52.4477 120 53 120H65.4762C70.736 120 75 124.264 75 129.524V129.524C75 129.787 74.7868 130 74.5238 130H53C52.4477 130 52 129.552 52 129V121Z" fill="#333333" />
+    <rect x="54" y="118" width="9" height="2" fill="#D9D9D9" />
+  </g>
+
+  <g id="left-leg">
+    <path d="M48 118L29 118L29 95C29 93.3431 30.3431 92 32 92L45 92C46.6569 92 48 93.3431 48 95L48 118Z" fill="#D80404" />
+    <path d="M32 121C32 120.448 32.4477 120 33 120H45.4762C50.736 120 55 124.264 55 129.524V129.524C55 129.787 54.7868 130 54.5238 130H33C32.4477 130 32 129.552 32 129V121Z" fill="#333333" />
+    <rect x="34" y="118" width="9" height="2" fill="#D9D9D9" />
+  </g>
+  <ellipse cx="49.5" cy="27.5" rx="16.5" ry="14.5" fill="#D9D9D9" />
+  <rect x="21" y="14.5055" width="57" height="7.90071" rx="3.95035" fill="#D80404" />
+  <path d="M33.4688 10.1406C33.4688 4.61778 37.9459 0.140625 43.4688 0.140625H55.5312C61.0541 0.140625 65.5312 4.61778 65.5312 10.1406V14.5055H33.4688V10.1406Z" fill="#D80404" />
+  <path d="M68 82L68 95L29 95L29 82L68 82Z" fill="#D80404" />
+  <path d="M29 49C29 46.2386 31.2386 44 34 44H63C65.7614 44 68 46.2386 68 49V80H29V49Z" fill="#D80404" />
+  <mask id="mask0_12_163" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="40" y="44" width="17" height="28">
+    <path d="M40 44H57L48.5 72L40 44Z" fill="#333333" />
+  </mask>
+  <g mask="url(#mask0_12_163)">
+    <rect x="40" y="44" width="17" height="28" fill="white" />
+    <mask id="mask1_12_163" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="40" y="44" width="17" height="28">
+      <path d="M40 44H57L48.5 72L40 44Z" fill="white" />
+    </mask>
+    <g mask="url(#mask1_12_163)">
+      <path d="M45 44H52L48.5 48L45 44Z" fill="#333333" />
+      <path d="M45 50L48.5 47L52 50L51 72H46L45 50Z" fill="#333333" />
+    </g>
+  </g>
+</svg>
