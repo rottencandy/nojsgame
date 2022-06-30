@@ -14,11 +14,21 @@ $skyColor: skyblue;
 $roadColor: gray;
 $roadPath: 'M 100 0 h 300 V 1300 c 0 500 150 500 150 1000 v 1000 c 0 500 -150 500 -150 1000 v 1000 c 0 500 150 500 150 1000 v 1000 c 0 500 150 500 150 1000 v 1000 c 0 1000 -300 1000 -300 2000 v 1300 h -300 v -1300 c 0 -1000 300 -1000 300 -2000 v -1000 c 0 -500 -150 -500 -150 -1000 v -1000 c 0 -500 -150 -500 -150 -1000 v -1000 c 0 -500 150 -500 150 -1000 v -1000 c 0 -500 -100 -500 -150 -1000 z';
 
+@font-face {
+    font-family: 'PixelOperatorRegular';
+    src: url('./PixelOperatorRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html,
 body {
     margin: 0;
     height: 100%;
-    font: 100 50px Trebuchet, sans-serif;
+    font-family: 'PixelOperatorRegular';
+    font-weight: normal;
+    font-size: 50px;
+    font-style: normal;
     overflow: hidden;
 }
 
