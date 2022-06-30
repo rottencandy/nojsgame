@@ -99,7 +99,7 @@ body {
 }
 
 .angled-backdrop {
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: 100%;
     transform-origin: top left;
@@ -109,12 +109,13 @@ body {
 }
 
 .angled-platform {
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: 100%;
     transform-origin: top left;
-    background: $skyColor;
+    background: transparent;
     transform: translateZ(-20em) translateY(50%) rotateX(90deg);
+    transform-style: preserve-3d;
 }
 
 .looping-floor {
@@ -122,6 +123,7 @@ body {
     width: $floorWidth;
     height: $floorDist;
     left: calc(50% - $floorWidth / 2);
+    transform-style: preserve-3d;
 
     // checkerboard pattern
     background:
@@ -132,11 +134,31 @@ body {
     animation: $floorMoveDuration linear 0s infinite normal both running floorLoopZ;
 
     > .road-path {
-        position: relative;
+        position: absolute;
         width: 100%;
         height: 100%;
         clip-path: path($roadPath);
         background: $roadColor;
+    }
+
+    > .obstacle {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        background: brown;
+        offset-path: path($roadPath);
+        offset-rotate: 0deg;
+
+        @for $i from 0 to 100 {
+            &-#{$i} {
+                offset-distance:
+                    math.percentage(calc(($i + math.random()) / 100));
+                transform:
+                    translateX(math.percentage(math.random()))
+                    translateZ(0.5em)
+                    rotateX(90deg);
+            }
+        }
     }
 }
 
@@ -174,8 +196,8 @@ body {
 */
 
 @for $i from 0 to 100 {
-    // move car in x - axis
-   .cell:nth-child(#{$i + 1}):hover ~ .scene > .car {
+    // move person in x - axis
+   .cell:nth-child(#{$i + 1}):hover ~ .scene > .person {
         @if $i <= 5 {
             left: 0;
         } @else if $i >= 95 {
@@ -201,7 +223,7 @@ body {
     }
 }
 
-.car {
+.person {
     position: absolute;
     width: 9%;
     height: 15vh;
