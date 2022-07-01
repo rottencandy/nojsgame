@@ -1,5 +1,5 @@
-@use 'sass:math';
-@import 'person';
+@use "sass:math";
+@import "person";
 /**
 * Vars
 */
@@ -13,11 +13,11 @@ $floorMoveDuration: 40s;
 $menuSize: 10em;
 $skyColor: #bf7b9e;
 $roadColor: gray;
-$roadPath: 'M 100 0 h 300 V 1300 c 0 500 150 500 150 1000 v 1000 c 0 500 -150 500 -150 1000 v 1000 c 0 500 150 500 150 1000 v 1000 c 0 500 150 500 150 1000 v 1000 c 0 1000 -300 1000 -300 2000 v 1300 h -300 v -1300 c 0 -1000 300 -1000 300 -2000 v -1000 c 0 -500 -150 -500 -150 -1000 v -1000 c 0 -500 -150 -500 -150 -1000 v -1000 c 0 -500 150 -500 150 -1000 v -1000 c 0 -500 -100 -500 -150 -1000 z';
+$roadPath: "M 100 0 h 300 V 1300 c 0 500 150 500 150 1000 v 1000 c 0 500 -150 500 -150 1000 v 1000 c 0 500 150 500 150 1000 v 1000 c 0 500 150 500 150 1000 v 1000 c 0 1000 -300 1000 -300 2000 v 1300 h -300 v -1300 c 0 -1000 300 -1000 300 -2000 v -1000 c 0 -500 -150 -500 -150 -1000 v -1000 c 0 -500 -150 -500 -150 -1000 v -1000 c 0 -500 150 -500 150 -1000 v -1000 c 0 -500 -100 -500 -150 -1000 z";
 
 @font-face {
-    font-family: 'PixelOperatorRegular';
-    src: url('./PixelOperatorRegular.ttf') format('truetype');
+    font-family: "PixelOperatorRegular";
+    src: url("./PixelOperatorRegular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
@@ -26,7 +26,7 @@ html,
 body {
     margin: 0;
     height: 100%;
-    font-family: 'PixelOperatorRegular';
+    font-family: "PixelOperatorRegular";
     font-weight: normal;
     font-size: 50px;
     font-style: normal;
@@ -39,8 +39,8 @@ body {
     min-height: 100%;
 
     // hide all inputs and use labels to toggle
-    >input {
-        display: none
+    > input {
+        display: none;
     }
 }
 
@@ -61,7 +61,7 @@ body {
     background: green;
     text-align: center;
 
-    >.start {
+    > .start {
         background: blue;
         cursor: pointer;
         padding: 10px;
@@ -69,7 +69,7 @@ body {
     }
 
     // hide menu on start click
-    #start:checked~& {
+    #start:checked ~ & {
         animation: 1s ease-in 0s 1 normal both running exitup;
     }
 }
@@ -126,12 +126,11 @@ body {
     transform-style: preserve-3d;
 
     // checkerboard pattern
-    background:
-        repeating-conic-gradient(gray 0% 25%, white 0% 50%)
-        50% / 50px
+    background: repeating-conic-gradient(gray 0% 25%, white 0% 50%) 50% / 50px
         50px;
 
-    animation: $floorMoveDuration linear 0s infinite normal both running floorLoopZ;
+    animation: $floorMoveDuration linear 0s infinite normal both running
+        floorLoopZ;
 
     > .road-path {
         position: absolute;
@@ -150,13 +149,23 @@ body {
         offset-rotate: 0deg;
 
         @for $i from 0 to 100 {
+            $max: 6; $min: 3;
             &-#{$i} {
-                offset-distance:
-                    math.percentage(calc(($i + math.random()) / 100));
-                transform:
-                    translateX(math.percentage(math.random()))
-                    translateZ(0.5em)
-                    rotateX(90deg);
+                offset-distance: math.percentage(
+                    calc(($i + math.random()) / 100)
+                );
+                animation: obstacle-move-#{$i} 1 + math.random() + s linear 1s alternate infinite running;
+            }
+            @keyframes obstacle-move-#{$i} {
+                from {
+                    transform: translateX(0%)
+                        translateZ(0.5em) rotateX(90deg);
+                }
+
+                to {
+                    transform: translateX(100%)
+                        translateZ(0.5em) rotateX(90deg);
+                }
             }
         }
     }
@@ -197,7 +206,7 @@ body {
 
 @for $i from 0 to 100 {
     // move person in x - axis
-   .cell:nth-child(#{$i + 1}):hover ~ .scene > .person {
+    .cell:nth-child(#{$i + 1}):hover ~ .scene > .person {
         @if $i <= 5 {
             left: 0;
         } @else if $i >= 95 {
@@ -208,17 +217,27 @@ body {
     }
 
     // change perspective cam in x - axis
-   .cell:nth-child(#{$i + 1}):hover ~ .scene > .perspective-wrapper {
-        @if $i <= 10 {        perspective-origin: 37% 45%;
-        } @else if $i <= 20 { perspective-origin: 40% 45%;
-        } @else if $i <= 30 { perspective-origin: 43% 45%;
-        } @else if $i <= 40 { perspective-origin: 45% 45%;
-        } @else if $i <= 50 { perspective-origin: 47% 45%;
-        } @else if $i <= 60 { perspective-origin: 50% 45%;
-        } @else if $i <= 70 { perspective-origin: 53% 45%;
-        } @else if $i <= 80 { perspective-origin: 55% 45%;
-        } @else if $i <= 90 { perspective-origin: 57% 45%;
-        } @else {             perspective-origin: 60% 45%;
+    .cell:nth-child(#{$i + 1}):hover ~ .scene > .perspective-wrapper {
+        @if $i <= 10 {
+            perspective-origin: 37% 45%;
+        } @else if $i <= 20 {
+            perspective-origin: 40% 45%;
+        } @else if $i <= 30 {
+            perspective-origin: 43% 45%;
+        } @else if $i <= 40 {
+            perspective-origin: 45% 45%;
+        } @else if $i <= 50 {
+            perspective-origin: 47% 45%;
+        } @else if $i <= 60 {
+            perspective-origin: 50% 45%;
+        } @else if $i <= 70 {
+            perspective-origin: 53% 45%;
+        } @else if $i <= 80 {
+            perspective-origin: 55% 45%;
+        } @else if $i <= 90 {
+            perspective-origin: 57% 45%;
+        } @else {
+            perspective-origin: 60% 45%;
         }
     }
 }
@@ -236,7 +255,7 @@ body {
 */
 @keyframes exitup {
     to {
-        top: -100%
+        top: -100%;
     }
 }
 
