@@ -160,28 +160,40 @@ body {
     > .obstacle {
         position: absolute;
         width: 1em;
-        height: 1em;
-        background: brown;
+        margin: auto;
         offset-path: path($roadPath);
         offset-rotate: 0deg;
 
         @for $i from 0 to 100 {
             $max: 6; $min: 3;
-            &-#{$i} {
-                offset-distance: math.percentage(
-                    calc(($i + math.random()) / 100)
-                );
-                animation: 1 + math.random() + s obstacle-move-#{$i} linear 0s alternate infinite running;
-            }
-            @keyframes obstacle-move-#{$i} {
-                from {
-                    transform: translateX(0%)
-                        translateZ(0.5em) rotateX(90deg);
+            @if $i % 2 == 0 {
+                &-#{$i} {
+                    offset-distance: math.percentage(
+                        calc(($i + math.random(3)) / 100)
+                    );
+                    animation: 1 + math.random() + s obstacle-move-#{$i} linear 0s alternate infinite running;
                 }
+                @keyframes obstacle-move-#{$i} {
+                    from {
+                        transform: translateX(0%)
+                            translateY(math.percentage(math.random())) translateZ(0.5em) rotateX(90deg) rotateZ(175deg);
+                    }
 
-                to {
-                    transform: translateX(100%)
-                        translateZ(0.5em) rotateX(90deg);
+                    to {
+                        transform: translateX(100%)
+                            translateY(math.percentage(math.random())) translateZ(0.5em) rotateX(90deg) rotateZ(185deg);
+                    }
+                }
+            } @else {
+                &-#{$i} {
+                    offset-distance: math.percentage(
+                        calc(($i + math.random(3)) / 100)
+                    );
+                    transform: translateX(math.percentage(math.random()))
+                        translateY(math.percentage(math.random()))
+                        rotateX(90deg)
+                        rotateY(180deg)
+                        rotateZ(180deg);
                 }
             }
         }
