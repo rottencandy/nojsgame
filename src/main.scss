@@ -171,7 +171,7 @@ body {
                 offset-distance: math.percentage(
                     calc(($i + math.random()) / 100)
                 );
-                animation: obstacle-move-#{$i} 1 + math.random() + s linear 1s alternate infinite running;
+                animation: 1 + math.random() + s obstacle-move-#{$i} linear 0s alternate infinite running;
             }
             @keyframes obstacle-move-#{$i} {
                 from {
