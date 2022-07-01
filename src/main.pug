@@ -1,7 +1,7 @@
 doctype html
 html(lang='en')
   head
-    title='Untitiled game'
+    title='Grave Runner'
     link(
         rel='stylesheet'
         type='text/css'
@@ -9,10 +9,18 @@ html(lang='en')
     )
   body
     .root
+        include background.pug
         input(type='checkbox' id='start' autocomplete='off')
         .menu
-            h4 Untitled Game
-            label.start(for='start') Start
+            h1 GRAVE RUNNER
+            label.start(for='start')
+                span ENTER IF YOU DARE
+            p.text
+                b INSTRUCTIONS
+                br
+                | Use mouse cursor to control the Grave Runner
+                |
+                | Don't run into tombs or else...
         - var n = 0
         .cell-wrapper
             .cell-grid
@@ -24,6 +32,7 @@ html(lang='en')
                         include person.svg
                     .perspective-wrapper
                         .angled-backdrop
+                            .mountain
                         .angled-platform
                             .looping-floor
                                 .road-path
