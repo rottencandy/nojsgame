@@ -15,9 +15,10 @@
     "build": "npm run build:pug && npm run build:sass",
     "dev": "watch 'npm build' ./src",
     "fastdev": "while inotifywait -e modify src/; do npm build; done",
-    "start": "static 'site'"
+    "start": "http-server 'site' -p 8080"
   },
   "dependencies": {
+    "http-server": "^14.1.1",
     "node-static": "^0.7.11"
   }
 }
