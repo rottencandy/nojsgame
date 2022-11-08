@@ -12,8 +12,8 @@
   "scripts": {
     "build:pug": "node build-pug.js",
     "build:sass": "sass src/main.scss game.css",
-    "build": "yarn run build:pug && yarn run build:sass",
-    "dev": "watch 'yarn build' ./src",
-    "fastdev": "while inotifywait -e modify src/; do yarn build; done"
+    "build": "npm run build:pug && npm run build:sass",
+    "dev": "watch 'npm build' ./src",
+    "fastdev": "while inotifywait -e modify src/; do npm build; done"
   }
 }
